@@ -22,7 +22,6 @@ public class ControleProduto {
 			break;
 		case 1:
 			// gravar
-			// CTRL + 1
 			gravar();
 			break;
 		case 2:
@@ -38,7 +37,6 @@ public class ControleProduto {
 			consultar();
 			break;
 		default:
-			System.out.println("Código inválido");
 			break;
 		}
 	}
@@ -70,11 +68,27 @@ public class ControleProduto {
 	}
 
 	private void atualizar() {
-		// IMPLEMENTAR PARA A PRÓXIMA AULA
+		Produto produto = new Produto();
+
+		produto.setCodigo(visao.lerCodigo());
+		produto.setDescricao(visao.lerDescricao());
+		produto.setPreco(visao.lerPreco());
+		produto.setQuantidade(visao.lerQuantidade());
+
+		ProdutoDAO dao = new ProdutoDAO();
+		dao.altera(produto);
+
+		manterProduto();
 	}
 
 	private void apagar() {
-		// IMPLEMENTAR PARA A PRÓXIMA AULA
+		Produto produto = new Produto();
+		produto.setCodigo(visao.lerCodigo());
+
+		ProdutoDAO dao = new ProdutoDAO();
+		dao.apaga(produto);
+
+		manterProduto();
 	}
 
 }
